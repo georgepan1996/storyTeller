@@ -1,0 +1,1 @@
+After pulling, you have to run npm install first in order for the modules and dependencies to be installed. 
