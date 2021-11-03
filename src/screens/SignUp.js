@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import rightcircleo from 'react-native-vector-icons/AntDesign';
 
 function SignUp(props) {
   const { navigation } = props;
