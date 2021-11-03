@@ -1,23 +1,38 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-
-const character = {
-  name: 'TestName',
-  home: 'TestHome',
-  species: 'human',
-};
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import TextInputBlock from './SignUp/TextInputBlock';
 
 function SignUp(props) {
   const { navigation } = props;
+
+  const [username, onChangeUserName] = React.useState(null);
+  const [email, onChangeEmail] = React.useState(null);
+  const [password, onChangePassword] = React.useState(null);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Sign Up Screen</Text>
-      <TouchableOpacity
-        style={styles.buttonContainer}
-        onPress={() => navigation.navigate('SignIn', { item: character })}
-      >
-        <Text style={styles.buttonText}>Who is {character.name}?</Text>
-      </TouchableOpacity>
+    <View>
+      <Text style={styles.text}>Create Account</Text>
+      <TextInput
+        onChangeText={onChangeUserName}
+        value={username}
+        placeholder='Username'
+      />
+      <TextInput
+        onChangeText={onChangeEmail}
+        value={email}
+        placeholder='Email'
+      />
+      <TextInput
+        onChangeText={onChangePassword}
+        value={password}
+        placeholder='Password'
+      />
     </View>
   );
 }
@@ -43,6 +58,13 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: '#fff',
+  },
+
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 

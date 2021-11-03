@@ -2,22 +2,23 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 function SignIn(props) {
-  const { route, navigation } = props;
-  const { item } = route.params;
-  const { name, home, species } = item;
+  const { navigation } = props;
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Sign In Screen</Text>
-      <View style={styles.card}>
-        <Text style={styles.cardText}>Name: {name}</Text>
-        <Text style={styles.cardText}>Home Planet: {home}</Text>
-        <Text style={styles.cardText}>Species: {species}</Text>
-      </View>
+
       <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => navigation.navigate('Settings')}
       >
         <Text style={styles.buttonText}>Go to Settings</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.navigate('SignUp')}
+      >
+        <Text style={styles.buttonText}>Go to Sign up screen</Text>
       </TouchableOpacity>
     </View>
   );

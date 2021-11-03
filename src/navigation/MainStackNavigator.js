@@ -12,7 +12,7 @@ function MainStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='SignUp'
+        initialRouteName='SignIn'
         screenOptions={{
           gestureEnabled: true,
           headerBackTitleVisible: false,
@@ -28,15 +28,14 @@ function MainStackNavigator() {
         <Stack.Screen
           name='SignUp'
           component={SignUp}
-          options={{ title: 'Sign Up Screen' }}
+          options={{ title: 'Sign Up' }}
           headerMode='float'
         />
         <Stack.Screen
           name='SignIn'
           component={SignIn}
-          options={({ route }) => ({
-            title: route.params.item.name,
-          })}
+          options={{ title: 'Sign In' }}
+          headerMode='float'
         />
         <Stack.Screen
           name='Settings'
