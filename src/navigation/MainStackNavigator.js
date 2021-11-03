@@ -15,20 +15,21 @@ function MainStackNavigator() {
         initialRouteName='SignIn'
         screenOptions={{
           gestureEnabled: true,
+          headerShown: false,
           headerBackTitleVisible: false,
           headerStyle: {
-            backgroundColor: '#101010',
+            backgroundColor: '#ff3fff',
           },
           headerTitleStyle: {
             fontWeight: 'bold',
           },
-          headerTintColor: '#ffd700',
+          headerTintColor: '#ffffff',
         }}
       >
         <Stack.Screen
           name='SignUp'
           component={SignUp}
-          options={{ title: 'Sign Up' }}
+          options={{ title: '' }}
           headerMode='float'
         />
         <Stack.Screen

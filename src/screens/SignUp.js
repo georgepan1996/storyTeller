@@ -5,8 +5,11 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  autoCompleteType,
 } from 'react-native';
-import TextInputBlock from './SignUp/TextInputBlock';
+
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import rightcircleo from 'react-native-vector-icons/AntDesign';
 
 function SignUp(props) {
   const { navigation } = props;
@@ -14,25 +17,66 @@ function SignUp(props) {
   const [username, onChangeUserName] = React.useState(null);
   const [email, onChangeEmail] = React.useState(null);
   const [password, onChangePassword] = React.useState(null);
+  const [hidePass, setHidePass] = React.useState(true);
 
   return (
-    <View>
-      <Text style={styles.text}>Create Account</Text>
-      <TextInput
-        onChangeText={onChangeUserName}
-        value={username}
-        placeholder='Username'
-      />
-      <TextInput
-        onChangeText={onChangeEmail}
-        value={email}
-        placeholder='Email'
-      />
-      <TextInput
-        onChangeText={onChangePassword}
-        value={password}
-        placeholder='Password'
-      />
+    <View style={styles.container}>
+      <View style={{ flex: 0.8 }}>
+        <Text style={styles.title}>Create{'\n'}Account</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={onChangeUserName}
+          value={username}
+          placeholder='Username'
+        />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={onChangeEmail}
+          keyboardType={'email-address'}
+          value={email}
+          placeholder='Email'
+        />
+        <View style={styles.searchSection}>
+          <TextInput
+            style={styles.textInputPassword}
+            onChangeText={onChangePassword}
+            value={password}
+            placeholder='Password'
+            secureTextEntry={hidePass ? true : false}
+          />
+          <Icon
+            style={styles.eyeIcon}
+            name={hidePass ? 'eye-slash' : 'eye'}
+            size={15}
+            color='grey'
+            onPress={() => setHidePass(!hidePass)}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'flex-end',
+        }}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: '30%',
+          }}
+        >
+          <Text style={styles.bottom}>Sign up</Text>
+          <Icon
+            style={styles.arrowIcon}
+            name={'angle-right'}
+            size={50}
+            color='black'
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -40,31 +84,52 @@ function SignUp(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
     backgroundColor: '#ebebeb',
   },
-  text: {
+  title: {
+    marginTop: '10%',
     color: '#101010',
-    fontSize: 24,
+    fontSize: 50,
     fontWeight: 'bold',
   },
-  buttonContainer: {
-    backgroundColor: '#222',
-    borderRadius: 5,
-    padding: 10,
-    margin: 20,
+  textInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    fontSize: 25,
+    width: '80%',
+    paddingTop: '1%',
+    paddingBottom: '1%',
+    marginBottom: '5%',
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    fontWeight: 'bold',
   },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
+  searchSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '80%',
+    paddingTop: '1%',
+    paddingBottom: '1%',
+    marginBottom: '5%',
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
   },
-
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  textInputPassword: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  eyeIcon: {
+    paddingLeft: '50%',
+  },
+  arrowIcon: {
+    marginRight: '10%',
+  },
+  bottom: {
+    color: '#101010',
+    marginEnd: 10,
+    fontSize: 40,
+    fontWeight: 'bold',
   },
 });
 
